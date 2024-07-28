@@ -7,36 +7,68 @@ import {
   MdOutlineTag,
 } from "react-icons/md";
 
-const Sidebar = ({ setActiveScreen }) => {
+const Sidebar = ({ setActiveScreen, screen }) => {
   return (
     <nav className="flex flex-col justify-between h-screen p-3 bg-gray-50 shadow w-72 z-50">
       <ul className="space-y-2">
-        <li className="rounded-md hover:bg-gray-200 transition duration-200 text-gray-800">
-          <a href="#" className="flex gap-2 items-center p-2" onClick={() => setActiveScreen("newNotes")}>
+        <li
+          className={`rounded-md hover:bg-gray-200 transition duration-200 text-gray-800 ${
+            screen == "newNotes" ? "bg-gray-200" : ""
+          }`}
+        >
+          <a
+            href="#"
+            className="flex gap-2 items-center p-2"
+            onClick={() => setActiveScreen("newNotes")}
+          >
             <MdOutlineStickyNote2 className="text-xl" />
             <span>New Note</span>
           </a>
         </li>
-        <li className="rounded-md hover:bg-gray-200 transition duration-200 text-gray-800">
-          <a href="#" className="flex gap-2 items-center p-2" onClick={() => setActiveScreen("notes")}>
+        <li className={`rounded-md hover:bg-gray-200 transition duration-200 text-gray-800 ${
+            screen == "notes" ? "bg-gray-200" : ""
+          }`}>
+          <a
+            href="#"
+            className="flex gap-2 items-center p-2"
+            onClick={() => setActiveScreen("notes")}
+          >
             <MdNotes className="text-xl" />
             <span>Notes</span>
           </a>
         </li>
-        <li className="rounded-md hover:bg-gray-200 transition duration-200 text-gray-800">
-          <a href="#" className="flex gap-2 items-center p-2" onClick={() => setActiveScreen("archives")}>
+        <li className={`rounded-md hover:bg-gray-200 transition duration-200 text-gray-800 ${
+            screen == "archives" ? "bg-gray-200" : ""
+          }`}>
+          <a
+            href="#"
+            className="flex gap-2 items-center p-2"
+            onClick={() => setActiveScreen("archives")}
+          >
             <MdOutlineArchive className="text-xl" />
             <span>Archives</span>
           </a>
         </li>
-        <li className="rounded-md hover:bg-gray-200 transition duration-200 text-gray-800">
-          <a href="#" className="flex gap-2 items-center p-2" onClick={() => setActiveScreen("tags")}>
+        <li className={`rounded-md hover:bg-gray-200 transition duration-200 text-gray-800 ${
+            screen == "tags" ? "bg-gray-200" : ""
+          }`}>
+          <a
+            href="#"
+            className="flex gap-2 items-center p-2"
+            onClick={() => setActiveScreen("tags")}
+          >
             <MdOutlineTag className="text-xl" />
             <span>Tags</span>
           </a>
         </li>
-        <li className="rounded-md hover:bg-gray-200 transition duration-200 text-gray-800">
-          <a href="#" className="flex gap-2 items-center p-2" onClick={() => setActiveScreen("settings")}>
+        <li className={`rounded-md hover:bg-gray-200 transition duration-200 text-gray-800 ${
+            screen == "settings" ? "bg-gray-200" : ""
+          }`}>
+          <a
+            href="#"
+            className="flex gap-2 items-center p-2"
+            onClick={() => setActiveScreen("settings")}
+          >
             <MdOutlineSettings className="text-xl" />
             <span>Settings</span>
           </a>
