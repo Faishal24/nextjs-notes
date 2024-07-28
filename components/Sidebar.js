@@ -25,9 +25,11 @@ const Sidebar = ({ setActiveScreen, screen }) => {
             <span>New Note</span>
           </a>
         </li>
-        <li className={`rounded-md hover:bg-gray-200 transition duration-200 text-gray-800 ${
+        <li
+          className={`rounded-md hover:bg-gray-200 transition duration-200 text-gray-800 ${
             screen == "notes" ? "bg-gray-200" : ""
-          }`}>
+          }`}
+        >
           <a
             href="#"
             className="flex gap-2 items-center p-2"
@@ -37,9 +39,11 @@ const Sidebar = ({ setActiveScreen, screen }) => {
             <span>Notes</span>
           </a>
         </li>
-        <li className={`rounded-md hover:bg-gray-200 transition duration-200 text-gray-800 ${
+        <li
+          className={`rounded-md hover:bg-gray-200 transition duration-200 text-gray-800 ${
             screen == "archives" ? "bg-gray-200" : ""
-          }`}>
+          }`}
+        >
           <a
             href="#"
             className="flex gap-2 items-center p-2"
@@ -49,9 +53,11 @@ const Sidebar = ({ setActiveScreen, screen }) => {
             <span>Archives</span>
           </a>
         </li>
-        <li className={`rounded-md hover:bg-gray-200 transition duration-200 text-gray-800 ${
+        <li
+          className={`rounded-md hover:bg-gray-200 transition duration-200 text-gray-800 ${
             screen == "tags" ? "bg-gray-200" : ""
-          }`}>
+          }`}
+        >
           <a
             href="#"
             className="flex gap-2 items-center p-2"
@@ -61,9 +67,11 @@ const Sidebar = ({ setActiveScreen, screen }) => {
             <span>Tags</span>
           </a>
         </li>
-        <li className={`rounded-md hover:bg-gray-200 transition duration-200 text-gray-800 ${
+        <li
+          className={`rounded-md hover:bg-gray-200 transition duration-200 text-gray-800 ${
             screen == "settings" ? "bg-gray-200" : ""
-          }`}>
+          }`}
+        >
           <a
             href="#"
             className="flex gap-2 items-center p-2"
@@ -77,16 +85,29 @@ const Sidebar = ({ setActiveScreen, screen }) => {
 
       <div>
         <ul>
-          <li className="rounded-md hover:text-gray-600 p-2 transition duration-200 text-sm text-gray-800">
-            <a href="#" className="">
-              Personal
+          <li className="rounded-md p-2 text-sm text-gray-800">
+            <a href="#">
+              <p class="group relative w-max">
+                <span>Personal</span>
+                <span class="absolute -bottom-1 left-0 w-0 transition-all h-0.5 bg-gray-800 group-hover:w-full"></span>
+              </p>
             </a>
           </li>
           <li className="rounded-md hover:text-gray-600 p-2 transition duration-200 text-sm text-gray-800">
-            <a href="#">Work</a>
+          <a href="#">
+              <p class="group relative w-max">
+                <span>Work</span>
+                <span class="absolute -bottom-1 left-0 w-0 transition-all h-0.5 bg-gray-800 group-hover:w-full"></span>
+              </p>
+            </a>
           </li>
           <li className="rounded-md hover:text-gray-600 p-2 transition duration-200 text-sm text-gray-800">
-            <a href="#">School</a>
+            <a href="#">
+              <p class="group relative w-max">
+                <span>School</span>
+                <span class="absolute -bottom-1 left-0 w-0 transition-all h-0.5 bg-gray-800 group-hover:w-full"></span>
+              </p>
+            </a>
           </li>
         </ul>
       </div>
