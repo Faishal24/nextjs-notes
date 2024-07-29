@@ -24,7 +24,7 @@ const Notes = () => {
           </div>
         </li>
 
-        <li>
+        <li className="cursor-pointer">
           <div className="flex justify-between">
             <div className="flex gap-3">
               <div className="bg-gray-200 rounded-md h-12 w-12 flex items-center justify-center">
