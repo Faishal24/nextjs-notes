@@ -87,25 +87,25 @@ const Sidebar = ({ setActiveScreen, screen }) => {
         <ul>
           <li className="rounded-md p-2 text-sm text-gray-800">
             <a href="#">
-              <p class="group relative w-max">
+              <p className="group relative w-max">
                 <span>Personal</span>
-                <span class="absolute -bottom-1 left-0 w-0 transition-all h-0.5 bg-gray-800 group-hover:w-full"></span>
+                <span className="absolute -bottom-1 left-0 w-0 transition-all h-0.5 bg-gray-800 group-hover:w-full"></span>
               </p>
             </a>
           </li>
           <li className="rounded-md hover:text-gray-600 p-2 transition duration-200 text-sm text-gray-800">
           <a href="#">
-              <p class="group relative w-max">
+              <p className="group relative w-max">
                 <span>Work</span>
-                <span class="absolute -bottom-1 left-0 w-0 transition-all h-0.5 bg-gray-800 group-hover:w-full"></span>
+                <span className="absolute -bottom-1 left-0 w-0 transition-all h-0.5 bg-gray-800 group-hover:w-full"></span>
               </p>
             </a>
           </li>
           <li className="rounded-md hover:text-gray-600 p-2 transition duration-200 text-sm text-gray-800">
             <a href="#">
-              <p class="group relative w-max">
+              <p className="group relative w-max">
                 <span>School</span>
-                <span class="absolute -bottom-1 left-0 w-0 transition-all h-0.5 bg-gray-800 group-hover:w-full"></span>
+                <span className="absolute -bottom-1 left-0 w-0 transition-all h-0.5 bg-gray-800 group-hover:w-full"></span>
               </p>
             </a>
           </li>

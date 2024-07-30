@@ -11,6 +11,7 @@ const NewNote = () => {
   const handleSubmit = async () => {
     if (!title || !tag || !content) {
       console.log("Please fill all the fields");
+      alert("Please fill all the fields");
       return;
     }
 
@@ -34,14 +35,13 @@ const NewNote = () => {
 
   return (
     <div>
-      <h1 className="text-3xl font-semibold mb-7">Create a new note</h1>
-      <form>
+      <h1 className="text-3xl font-semibold mb-7 text-primary">Create a new note</h1>
         <div className="flex gap-5">
           <div className="w-1/3">
             <div className="mb-7">
               <label
                 htmlFor="title"
-                className="text-lg font-semibold block mb-2"
+                className="text-lg font-semibold block mb-2 text-primary"
               >
                 Title
               </label>
@@ -49,7 +49,7 @@ const NewNote = () => {
                 type="text"
                 id="title"
                 onChange={(e) => setTitle(e.target.value)}
-                className="w-full p-3 border border-gray-300 rounded-md"
+                className="w-full p-3 border border-gray-300 rounded-md text-primary bg-white"
               />
             </div>
             <div>
@@ -86,12 +86,11 @@ const NewNote = () => {
           </div>
         </div>
         <button
-          className="w-full bg-sky-500 text-white px-5 py-3 rounded-md"
+          className="w-full bg-sky-900 text-gray-200 font-semibold px-5 py-3 rounded-md hover:bg-sky-800 hover:text-sky-200"
           onClick={() => handleSubmit()}
         >
           Create Note
         </button>
-      </form>
     </div>
   );
 };
