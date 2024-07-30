@@ -19,3 +19,11 @@ export async function GET() {
   const notes = await NoteModel.find();
   return NextResponse.json({ notes });
 }
+
+export async function DELETE(request) {
+  const id = request.nextUrl.searchParams.get("id");
+  await connectMongoDB();
+
+  await NoteModel.findByIdAndDelete(id);
+  return NextResponse.json({ message: "Note deleted successfully" });
+}
