@@ -1,6 +1,10 @@
 import React from "react";
 
 const NewNote = () => {
+  const [title, setTitle] = React.useState("");
+  const [tag, setTag] = React.useState("Personal");
+  const [content, setContent] = React.useState("");
+
   return (
     <div>
       <h1 className="text-3xl font-semibold mb-7">Create a new note</h1>
@@ -13,6 +17,7 @@ const NewNote = () => {
             <input
               type="text"
               id="title"
+              onChange={(e) => setTitle(e.target.value)}
               className="w-full p-3 border border-gray-300 rounded-md"
             />
           </div>
@@ -22,6 +27,7 @@ const NewNote = () => {
             </label>
             <select
               id="tag"
+              onChange={(e) => setTag(e.target.value)}
               className="w-full p-3 border border-gray-300 rounded-md"
             >
               <option>Personal</option>
@@ -42,14 +48,15 @@ const NewNote = () => {
             </label>
             <textarea
               id="content"
+              onChange={(e) => setContent(e.target.value)}
               className="w-full min-h-40 p-3 border border-gray-300 rounded-md"
             ></textarea>
           </div>
-          <button className="w-full bg-sky-500 text-white px-5 py-3 rounded-md">
-            Create Note
-          </button>
         </div>
       </form>
+          <button className="w-full bg-sky-500 text-white px-5 py-3 rounded-md" onClick={() => console.log(title, tag, content)}>
+            Create Note
+          </button>
     </div>
   );
 };
