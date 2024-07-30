@@ -1,9 +1,36 @@
+import { useRouter } from "next/navigation";
 import React from "react";
 
 const NewNote = () => {
+  const router = useRouter();
+
   const [title, setTitle] = React.useState("");
   const [tag, setTag] = React.useState("Personal");
   const [content, setContent] = React.useState("");
+
+  const handleSubmit = async () => {
+    if (!title || !tag || !content) {
+      console.log("Please fill all the fields");
+      return;
+    }
+
+    try {
+      const res = await fetch("http://localhost:3000/api/notes", {
+        method: "POST",
+        body: JSON.stringify({ title, tag, content }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (res.ok) {
+        router.push("/");
+        console.log("Note created successfully");
+      }
+    } catch (error) {
+      console.error("Error creating note: ", error);
+    }
+  };
 
   return (
     <div>
@@ -54,9 +81,12 @@ const NewNote = () => {
           </div>
         </div>
       </form>
-          <button className="w-full bg-sky-500 text-white px-5 py-3 rounded-md" onClick={() => console.log(title, tag, content)}>
-            Create Note
-          </button>
+      <button
+        className="w-full bg-sky-500 text-white px-5 py-3 rounded-md"
+        onClick={() => handleSubmit()}
+      >
+        Create Note
+      </button>
     </div>
   );
 };
