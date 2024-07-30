@@ -1,6 +1,7 @@
 import React from "react";
 import { HiOutlineDocumentText } from "react-icons/hi2";
 import { HiOutlineDotsHorizontal } from "react-icons/hi";
+import Tags from "./Tags";
 
 const getNotes = async () => {
   try {
@@ -27,15 +28,15 @@ const Notes = async () => {
 
       <ul className="flex flex-col gap-5">
         {notes.map((note) => (
-          <li className="cursor-pointer">
+          <li className="cursor-pointer" key={note._id}>
             <div className="flex justify-between items-center">
-              <div className="flex gap-3">
-                <div className="bg-gray-200 rounded-md h-12 w-12 flex items-center justify-center">
+              <div className="flex gap-3 items-center">
+                <div className="bg-gray-200 rounded-md h-14 w-14 flex items-center justify-center">
                   <HiOutlineDocumentText className="text-2xl" />
                 </div>
-                <div>
+                <div className="flex flex-col gap-1">
                   <h3>{note.title}</h3>
-                  <p>{note.tag}</p>
+                  <Tags text={note.tag} />
                 </div>
               </div>
               <HiOutlineDotsHorizontal className="text-2xl" />
