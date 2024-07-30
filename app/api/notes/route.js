@@ -12,3 +12,10 @@ export async function POST(request) {
     { status: 201 }
   );
 }
+
+export async function GET() {
+  await connectMongoDB();
+
+  const notes = await NoteModel.find();
+  return NextResponse.json({ notes });
+}
