@@ -31,10 +31,10 @@ export default function Home() {
   };
 
   return (
-    <main className="flex flex-row">
+    <main className="md:flex md:flex-row bg-white">
       <Sidebar setActiveScreen={setActiveScreen} screen={screen}/>
 
-      <div className="p-5 w-screen h-screen bg-white">
+      <div className="px-3 md:p-5 w-screen h-screen bg-white">
         {renderScreen()}
       </div>
     </main>
