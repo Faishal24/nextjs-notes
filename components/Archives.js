@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { HiOutlineDocumentText } from "react-icons/hi2";
 import { HiOutlineTrash } from "react-icons/hi";
 import Tag from "@/libs/Tag";
-import { MdOutlineArchive } from "react-icons/md";
+import { MdOutlineUnarchive  } from "react-icons/md";
 
 export default function Archives() {
   const [notes, setNotes] = useState([]);
@@ -77,7 +77,7 @@ export default function Archives() {
                   </div>
                 </div>
                 <div className="flex gap-2">
-                  <MdOutlineArchive
+                  <MdOutlineUnarchive 
                     className="text-2xl text-blue-500"
                     onClick={() => unArchiveNote(note._id)}
                   />

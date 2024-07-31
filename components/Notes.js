@@ -42,6 +42,15 @@ export default function Notes() {
     getNotes();
   };
 
+  const deleteNote = async (id) => {
+    await fetch(`http://localhost:3000/api/notes?id=${id}`, {
+      method: "DELETE",
+    });
+    console.log(`http://localhost:3000/api/notes?${id}`)
+
+    getNotes();
+  }
+
   return (
     <div>
       <h1 className="text-3xl font-semibold mb-7 text-primary">
@@ -80,7 +89,7 @@ export default function Notes() {
               </div>
               <div className="flex gap-2">
                 <MdOutlineArchive className="text-2xl text-blue-500" onClick={() => archiveNote(note._id)}/>
-                <HiOutlineTrash className="text-2xl text-red-500" />
+                <HiOutlineTrash className="text-2xl text-red-500" onClick={() => deleteNote(note._id)}/>
               </div>
             </div>
           </li>
