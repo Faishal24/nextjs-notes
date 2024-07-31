@@ -1,40 +1,57 @@
-import React from "react";
+"use client";
+
+import React, { useState, useEffect } from "react";
 import { HiOutlineDocumentText } from "react-icons/hi2";
 import { HiOutlineTrash } from "react-icons/hi";
 import Tag from "@/libs/Tag";
-import axios from "axios";
 import { MdOutlineArchive } from "react-icons/md";
 
-const getNotes = async () => {
-  try {
-    const res = await fetch("http://localhost:3000/api/notes", {
-      cache: "no-store",
-    })
+export default function Notes() {
+  const [notes, setNotes] = useState([]);
 
-    if (!res.ok) {
-      throw new Error("Failed to fetch notes");
+  const getNotes = async () => {
+    try {
+      const res = await fetch("http://localhost:3000/api/notes", {
+        cache: "no-store",
+      });
+
+      if (!res.ok) {
+        throw new Error("Failed to fetch notes");
+      }
+
+      const data = await res.json();
+      setNotes(data.notes);
+    } catch (error) {
+      console.log("Error loading note data: ", error);
     }
+  };
 
-    return res.json()
-  } catch (error) {
-    console.log("Error loading note data: ", error);
-  }
-};
-
-export default async function Notes() {
-  const { notes } = await getNotes();
+  useEffect(() => {
+    getNotes();
+  }, []);
 
   const archiveNote = async (id) => {
-    await axios.put(`http://localhost:3000/api/notes/${id}`);
+    await fetch(`http://localhost:3000/api/notes/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({archive: true}),
+    });
+
+    getNotes();
   };
 
   return (
     <div>
-      <h1 className="text-3xl font-semibold mb-7 text-primary">Welcome back, Atmin!</h1>
-      <p className="text-xl font-semibold mb-4 text-primary">Here are your notes:</p>
-
+      <h1 className="text-3xl font-semibold mb-7 text-primary">
+        Welcome back, Atmin!
+      </h1>
+      <p className="text-xl font-semibold mb-4 text-primary">
+        Here are your notes:
+      </p>
       <ul className="flex flex-col gap-2">
-        {notes.map((note) => (
+        {notes.filter(note => !note.archive).map((note) => (
           <li
             key={note._id}
             className="cursor-pointer w-full p-2 border border-gray-400 hover:bg-gray-100 rounded-md"
@@ -71,4 +88,4 @@ export default async function Notes() {
       </ul>
     </div>
   );
-};
+}
