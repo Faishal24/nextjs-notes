@@ -17,6 +17,20 @@ module.exports = {
         current: "currentColor",
         "primary": "#030712",
       },
+      keyframes: {
+        rotateIn: {
+          '0%': { transform: 'rotate(-180deg)', opacity: '0' },
+          '100%': { transform: 'rotate(0deg)', opacity: '1' },
+        },
+        rotateOut: {
+          '0%': { transform: 'rotate(0deg)', opacity: '1' },
+          '100%': { transform: 'rotate(180deg)', opacity: '0' },
+        },
+      },
+      animation: {
+        rotateIn: 'rotateIn 0.3s forwards',
+        rotateOut: 'rotateOut 0.3s forwards',
+      },
     },
   },
   plugins: [],

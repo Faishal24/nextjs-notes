@@ -12,20 +12,31 @@ import {
 } from "react-icons/md";
 
 const Sidebar = ({ setActiveScreen, screen }) => {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
 
   const toggle = () => {
-    setIsOpen(!isOpen);
+    setIsAnimating(true);
+    setTimeout(() => {
+      setIsOpen(!isOpen);
+      setIsAnimating(false);
+    }, 200); // duration of the animation
   };
 
   return (
     <nav className="md:flex md:flex-col md:justify-between md:h-screen md:p-3 md:bg-gray-50 md:shadow md:w-72 md:z-50">
       <div className="flex md:hidden h-10 w-screen items-center justify-end px-5">
-        {isOpen ? (
-          <MdClose className="text-3xl" onClick={() => toggle()} />
-        ) : (
-          <MdMenu className="text-3xl" onClick={() => toggle()} />
-        )}
+      {isOpen ? (
+        <MdClose
+          className={`text-3xl ${isAnimating ? 'animate-rotateOut' : 'animate-rotateIn'}`}
+          onClick={toggle}
+        />
+      ) : (
+        <MdMenu
+          className={`text-3xl ${isAnimating ? 'animate-rotateOut' : 'animate-rotateIn'}`}
+          onClick={toggle}
+        />
+      )}
       </div>
 
       <div className={`${isOpen && "border-b mb-2"} rounded-b-lg md:hidden`}>
