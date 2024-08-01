@@ -24,19 +24,23 @@ const Sidebar = ({ setActiveScreen, screen }) => {
   };
 
   return (
-    <nav className="md:flex md:flex-col md:justify-between md:h-screen md:p-3 md:bg-gray-50 md:shadow md:w-72 md:z-50">
+    <nav className="">
       <div className="flex md:hidden h-10 w-screen items-center justify-end px-5">
-      {isOpen ? (
-        <MdClose
-          className={`text-3xl ${isAnimating ? 'animate-rotateOut' : 'animate-rotateIn'}`}
-          onClick={toggle}
-        />
-      ) : (
-        <MdMenu
-          className={`text-3xl ${isAnimating ? 'animate-rotateOut' : 'animate-rotateIn'}`}
-          onClick={toggle}
-        />
-      )}
+        {isOpen ? (
+          <MdClose
+            className={`text-3xl ${
+              isAnimating ? "animate-rotateOut" : "animate-rotateIn"
+            }`}
+            onClick={toggle}
+          />
+        ) : (
+          <MdMenu
+            className={`text-3xl ${
+              isAnimating ? "animate-rotateOut" : "animate-rotateIn"
+            }`}
+            onClick={toggle}
+          />
+        )}
       </div>
 
       <div className={`${isOpen && "border-b mb-2"} rounded-b-lg md:hidden`}>
@@ -116,7 +120,7 @@ const Sidebar = ({ setActiveScreen, screen }) => {
         )}
       </div>
 
-      <div className="hidden md:block">
+      <div className="hidden md:flex md:flex-col md:justify-between md:h-screen md:p-3 md:bg-gray-50 md:shadow md:w-72 md:z-50">
         <ul className="space-y-2">
           <li
             className={`rounded-md hover:bg-gray-200 transition duration-200 text-gray-800 ${

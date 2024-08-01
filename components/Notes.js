@@ -68,7 +68,7 @@ export default function Notes() {
           .map((note) => (
             <li
               key={note._id}
-              className="cursor-pointer w-full p-2 border border-gray-400 hover:bg-gray-100 rounded-md"
+              className="cursor-pointer w-full px-3 py-2 md:px-2 border border-gray-400 hover:bg-gray-100 rounded-md"
             >
               <div className="flex justify-between items-center">
                 <div className="flex gap-3 items-center">
@@ -78,7 +78,7 @@ export default function Notes() {
                     <span className="text-gray-600">{note.content}</span>
                   </div>
                 </div>
-                <div className="flex gap-2">
+                <div className="flex gap-2 flex-col border-l-2 pl-2 md:border-0 md:flex-row">
                   <MdOutlineArchive
                     className="text-2xl text-blue-500 hover:scale-125 transition"
                     onClick={() => archiveNote(note._id)}
