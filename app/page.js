@@ -9,14 +9,16 @@ const NewNote = dynamic(() => import("@/components/NewNote"));
 const Archives = dynamic(() => import("@/components/Archives"));
 const Tags = dynamic(() => import("@/components/Tags"));
 const Settings = dynamic(() => import("@/components/Settings"));
+const EditNote = dynamic(() => import("@/components/EditNote"));
 
 export default function Home() {
   const [screen, setActiveScreen] = React.useState("notes");
+  const [data, setData] = React.useState([]);
 
   const renderScreen = () => {
     switch (screen) {
       case "notes":
-        return <Notes />;
+        return <Notes setActiveScreen={setActiveScreen} setData={setData} />;
       case "newNotes":
         return <NewNote />;
       case "archives":
@@ -25,6 +27,8 @@ export default function Home() {
         return <Tags />;
       case "settings":
         return <Settings />;
+      case "editNote":
+        return <EditNote data={data}/>;
       default:
         return <Notes />;
     }
@@ -32,7 +36,7 @@ export default function Home() {
 
   return (
     <main className="md:flex md:flex-row bg-white">
-      <Sidebar setActiveScreen={setActiveScreen} screen={screen}/>
+      <Sidebar setActiveScreen={setActiveScreen} screen={screen} />
 
       <div className="px-3 md:p-5 w-screen h-screen bg-white">
         {renderScreen()}

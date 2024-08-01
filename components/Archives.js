@@ -4,8 +4,8 @@ import React, { useState, useEffect } from "react";
 import { HiOutlineDocumentText } from "react-icons/hi2";
 import { HiOutlineTrash } from "react-icons/hi";
 import { MdOutlineUnarchive } from "react-icons/md";
-import PopUp from "./PopUp";
-import Logo from "./Logo";
+import PopUp from "@/components/PopUp";
+import Logo from "@/components/Logo";
 
 export default function Archives() {
   const [notes, setNotes] = useState([]);

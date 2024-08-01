@@ -3,10 +3,10 @@
 import React, { useState, useEffect } from "react";
 import { HiOutlineTrash } from "react-icons/hi";
 import { MdOutlineArchive } from "react-icons/md";
-import PopUp from "./PopUp";
-import Logo from "./Logo";
+import PopUp from "@/components/PopUp";
+import Logo from "@/components/Logo";
 
-export default function Notes() {
+export default function Notes({ setActiveScreen, setData }) {
   const [notes, setNotes] = useState([]);
   const [popUpInfo, setPopUpInfo] = useState(null);
 
@@ -54,6 +54,11 @@ export default function Notes() {
     getNotes();
   };
 
+  const moveEdit = (note) => {
+    setActiveScreen("editNote");
+    setData(note);
+  }
+
   return (
     <div className="bg-white">
       <h1 className="text-3xl font-semibold mb-7 text-primary">
@@ -69,6 +74,7 @@ export default function Notes() {
             <li
               key={note._id}
               className="cursor-pointer w-full px-3 py-2 md:px-2 border border-gray-400 hover:bg-gray-100 rounded-md"
+              onClick={() => moveEdit(note)}
             >
               <div className="flex justify-between items-center">
                 <div className="flex gap-3 items-center">

@@ -1,11 +1,9 @@
 'use client'
 
 import PopUp from "@/components/PopUp";
-import { useRouter } from "next/navigation";
 import React, {useState, useEffect} from "react";
 
 const NewNote = () => {
-  const router = useRouter();
 
   const [title, setTitle] = useState("");
   const [tag, setTag] = useState("Personal");
