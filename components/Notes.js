@@ -1,11 +1,10 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { HiOutlineDocumentText } from "react-icons/hi2";
 import { HiOutlineTrash } from "react-icons/hi";
-import Tag from "@/libs/Tag";
 import { MdOutlineArchive } from "react-icons/md";
 import PopUp from "./PopUp";
+import Logo from "./Logo";
 
 export default function Notes() {
   const [notes, setNotes] = useState([]);
@@ -56,7 +55,7 @@ export default function Notes() {
   };
 
   return (
-    <div>
+    <div className="bg-white">
       <h1 className="text-3xl font-semibold mb-7 text-primary">
         Welcome back, Atmin!
       </h1>
@@ -73,21 +72,7 @@ export default function Notes() {
             >
               <div className="flex justify-between items-center">
                 <div className="flex gap-3 items-center">
-                  <div
-                    className={`rounded-md h-12 w-12 flex items-center justify-center border
-                  ${
-                    note.tag == "Personal"
-                      ? `bg-sky-200 text-sky-800 border-sky-900`
-                      : note.tag == "Work"
-                      ? `bg-amber-200 text-amber-800 border-amber-900`
-                      : note.tag == "Health"
-                      ? `bg-emerald-200 text-emerald-800 border-emerald-900`
-                      : `bg-violet-200 text-violet-800 border-violet-900`
-                  } 
-                  `}
-                  >
-                    <HiOutlineDocumentText className="text-2xl" />
-                  </div>
+                  <Logo tag={note.tag} />
                   <div className="flex flex-col items-start gap-0.5">
                     <h3 className="font-semibold text-primary">{note.title}</h3>
                     <span className="text-gray-600">{note.content}</span>

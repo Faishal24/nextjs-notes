@@ -39,9 +39,9 @@ const NewNote = () => {
 
   return (
     <div>
-      <h1 className="text-3xl font-semibold mb-7 text-primary" onClick={() => console.log(showPopUp)}>Create a new note</h1>
-        <div className="flex gap-5">
-          <div className="w-1/3">
+      <h1 className="text-3xl font-semibold mb-7 text-primary">Create a new note</h1>
+        <div className="sm:flex gap-5">
+          <div className="s:w-1/3">
             <div className="mb-7">
               <label
                 htmlFor="title"
@@ -73,7 +73,7 @@ const NewNote = () => {
             </div>
           </div>
 
-          <div className="w-2/3">
+          <div className="pt-[1.25rem] sm:pt-0 sm:w-2/3">
             <div className="mb-5">
               <label
                 htmlFor="content"
