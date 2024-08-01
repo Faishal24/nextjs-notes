@@ -5,9 +5,11 @@ import { HiOutlineDocumentText } from "react-icons/hi2";
 import { HiOutlineTrash } from "react-icons/hi";
 import Tag from "@/libs/Tag";
 import { MdOutlineArchive } from "react-icons/md";
+import PopUp from "./PopUp";
 
 export default function Notes() {
   const [notes, setNotes] = useState([]);
+  const [popUpInfo, setPopUpInfo] = useState(null);
 
   const getNotes = async () => {
     try {
@@ -36,9 +38,10 @@ export default function Notes() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({archive: true}),
+      body: JSON.stringify({ archive: true }),
     });
 
+    setPopUpInfo({ text: "Note archived", type: "success" });
     getNotes();
   };
 
@@ -46,10 +49,11 @@ export default function Notes() {
     await fetch(`http://localhost:3000/api/notes?id=${id}`, {
       method: "DELETE",
     });
-    console.log(`http://localhost:3000/api/notes?${id}`)
+    console.log(`http://localhost:3000/api/notes?${id}`);
 
+    setPopUpInfo({ text: "Note deleted", type: "danger" });
     getNotes();
-  }
+  };
 
   return (
     <div>
@@ -60,15 +64,17 @@ export default function Notes() {
         Here are your notes:
       </p>
       <ul className="flex flex-col gap-2">
-        {notes.filter(note => !note.archive).map((note) => (
-          <li
-            key={note._id}
-            className="cursor-pointer w-full p-2 border border-gray-400 hover:bg-gray-100 rounded-md"
-          >
-            <div className="flex justify-between items-center">
-              <div className="flex gap-3 items-center">
-                <div
-                  className={`rounded-md h-12 w-12 flex items-center justify-center border
+        {notes
+          .filter((note) => !note.archive)
+          .map((note) => (
+            <li
+              key={note._id}
+              className="cursor-pointer w-full p-2 border border-gray-400 hover:bg-gray-100 rounded-md"
+            >
+              <div className="flex justify-between items-center">
+                <div className="flex gap-3 items-center">
+                  <div
+                    className={`rounded-md h-12 w-12 flex items-center justify-center border
                   ${
                     note.tag == "Personal"
                       ? `bg-sky-200 text-sky-800 border-sky-900`
@@ -79,22 +85,35 @@ export default function Notes() {
                       : `bg-violet-200 text-violet-800 border-violet-900`
                   } 
                   `}
-                >
-                  <HiOutlineDocumentText className="text-2xl" />
+                  >
+                    <HiOutlineDocumentText className="text-2xl" />
+                  </div>
+                  <div className="flex flex-col items-start gap-0.5">
+                    <h3 className="font-semibold text-primary">{note.title}</h3>
+                    <span className="text-gray-600">{note.content}</span>
+                  </div>
                 </div>
-                <div className="flex flex-col items-start gap-0.5">
-                  <h3 className="font-semibold text-primary">{note.title}</h3>
-                  <span className="text-gray-600">{note.content}</span>
+                <div className="flex gap-2">
+                  <MdOutlineArchive
+                    className="text-2xl text-blue-500 hover:scale-125 transition"
+                    onClick={() => archiveNote(note._id)}
+                  />
+                  <HiOutlineTrash
+                    className="text-2xl text-red-500 hover:scale-125 transition"
+                    onClick={() => deleteNote(note._id)}
+                  />
                 </div>
               </div>
-              <div className="flex gap-2">
-                <MdOutlineArchive className="text-2xl text-blue-500" onClick={() => archiveNote(note._id)}/>
-                <HiOutlineTrash className="text-2xl text-red-500" onClick={() => deleteNote(note._id)}/>
-              </div>
-            </div>
-          </li>
-        ))}
+            </li>
+          ))}
       </ul>
+      {popUpInfo && (
+        <PopUp
+          text={popUpInfo.text}
+          type={popUpInfo.type}
+          setShowPopUp={setPopUpInfo}
+        />
+      )}
     </div>
   );
 }

@@ -1,22 +1,26 @@
+'use client'
+
+import PopUp from "@/components/PopUp";
 import { useRouter } from "next/navigation";
-import React from "react";
+import React, {useState, useEffect} from "react";
 
 const NewNote = () => {
   const router = useRouter();
 
-  const [title, setTitle] = React.useState("");
-  const [tag, setTag] = React.useState("Personal");
-  const [content, setContent] = React.useState("");
+  const [title, setTitle] = useState("");
+  const [tag, setTag] = useState("Personal");
+  const [content, setContent] = useState("");
+
+  const [showPopUp, setShowPopUp] = useState(false);
 
   const handleSubmit = async () => {
     if (!title || !tag || !content) {
-      console.log("Please fill all the fields");
       alert("Please fill all the fields");
       return;
     }
 
     try {
-      const res = await fetch("http://localhost:3000/api/notes", {
+      const res = await fetch("/api/notes", {
         method: "POST",
         body: JSON.stringify({ title, tag, content }),
         headers: {
@@ -25,7 +29,7 @@ const NewNote = () => {
       });
 
       if (res.ok) {
-        router.push("/");
+        setShowPopUp(true);
         console.log("Note created successfully");
       }
     } catch (error) {
@@ -35,7 +39,7 @@ const NewNote = () => {
 
   return (
     <div>
-      <h1 className="text-3xl font-semibold mb-7 text-primary">Create a new note</h1>
+      <h1 className="text-3xl font-semibold mb-7 text-primary" onClick={() => console.log(showPopUp)}>Create a new note</h1>
         <div className="flex gap-5">
           <div className="w-1/3">
             <div className="mb-7">
@@ -91,6 +95,7 @@ const NewNote = () => {
         >
           Create Note
         </button>
+        {showPopUp && <PopUp text="Note created successfully" type="success" setShowPopUp={setShowPopUp}/>}
     </div>
   );
 };

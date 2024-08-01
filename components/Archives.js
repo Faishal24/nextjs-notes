@@ -4,10 +4,12 @@ import React, { useState, useEffect } from "react";
 import { HiOutlineDocumentText } from "react-icons/hi2";
 import { HiOutlineTrash } from "react-icons/hi";
 import Tag from "@/libs/Tag";
-import { MdOutlineUnarchive  } from "react-icons/md";
+import { MdOutlineUnarchive } from "react-icons/md";
+import PopUp from "./PopUp";
 
 export default function Archives() {
   const [notes, setNotes] = useState([]);
+  const [popUpInfo, setPopUpInfo] = useState(null);
 
   const getNotes = async () => {
     try {
@@ -39,6 +41,17 @@ export default function Archives() {
       body: JSON.stringify({ archive: false }),
     });
 
+    setPopUpInfo({ text: "Note unarchived", type: "success" });
+    getNotes();
+  };
+
+  const deleteNote = async (id) => {
+    await fetch(`http://localhost:3000/api/notes?id=${id}`, {
+      method: "DELETE",
+    });
+    console.log(`http://localhost:3000/api/notes?${id}`);
+
+    setPopUpInfo({ text: "Note deleted", type: "danger" });
     getNotes();
   };
 
@@ -77,16 +90,26 @@ export default function Archives() {
                   </div>
                 </div>
                 <div className="flex gap-2">
-                  <MdOutlineUnarchive 
-                    className="text-2xl text-blue-500"
+                  <MdOutlineUnarchive
+                    className="text-2xl text-blue-500 hover:scale-125 transition"
                     onClick={() => unArchiveNote(note._id)}
                   />
-                  <HiOutlineTrash className="text-2xl text-red-500" />
+                  <HiOutlineTrash
+                    className="text-2xl text-red-500 hover:scale-125 transition"
+                    onClick={() => deleteNote(note._id)}
+                  />
                 </div>
               </div>
             </li>
           ))}
       </ul>
+      {popUpInfo && (
+        <PopUp
+          text={popUpInfo.text}
+          type={popUpInfo.type}
+          setShowPopUp={setPopUpInfo}
+        />
+      )}
     </div>
   );
 }
