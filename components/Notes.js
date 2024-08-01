@@ -78,7 +78,7 @@ export default function Notes() {
                     <span className="text-gray-600">{note.content}</span>
                   </div>
                 </div>
-                <div className="flex gap-2 flex-col border-l-2 pl-2 md:border-0 md:flex-row">
+                <div className="flex gap-2 flex-col border-l-2 pl-2 ml-2 md:ml-0 md:border-0 md:flex-row">
                   <MdOutlineArchive
                     className="text-2xl text-blue-500 hover:scale-125 transition"
                     onClick={() => archiveNote(note._id)}

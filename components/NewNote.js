@@ -68,6 +68,7 @@ const NewNote = () => {
                 <option>Personal</option>
                 <option>Work</option>
                 <option>School</option>
+                <option>Health</option>
                 <option>Other</option>
               </select>
             </div>
