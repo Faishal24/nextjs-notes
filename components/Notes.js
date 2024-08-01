@@ -12,7 +12,7 @@ export default function Notes() {
 
   const getNotes = async () => {
     try {
-      const res = await fetch("http://localhost:3000/api/notes", {
+      const res = await fetch("/api/notes", {
         cache: "no-store",
       });
 
@@ -32,7 +32,7 @@ export default function Notes() {
   }, []);
 
   const archiveNote = async (id) => {
-    await fetch(`http://localhost:3000/api/notes/${id}`, {
+    await fetch(`/api/notes/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -45,10 +45,10 @@ export default function Notes() {
   };
 
   const deleteNote = async (id) => {
-    await fetch(`http://localhost:3000/api/notes?id=${id}`, {
+    await fetch(`/api/notes?id=${id}`, {
       method: "DELETE",
     });
-    console.log(`http://localhost:3000/api/notes?${id}`);
+    console.log(`/api/notes?${id}`);
 
     setPopUpInfo({ text: "Note deleted", type: "danger" });
     getNotes();
