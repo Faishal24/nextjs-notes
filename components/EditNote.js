@@ -1,7 +1,7 @@
 "use client";
 
 import PopUp from "@/components/PopUp";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 const EditNote = ({ data }) => {
   const [title, setTitle] = useState(data.title);

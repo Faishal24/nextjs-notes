@@ -57,7 +57,7 @@ export default function Notes({ setActiveScreen, setData }) {
   const moveEdit = (note) => {
     setActiveScreen("editNote");
     setData(note);
-  }
+  };
 
   return (
     <div className="bg-white">
@@ -74,10 +74,12 @@ export default function Notes({ setActiveScreen, setData }) {
             <li
               key={note._id}
               className="cursor-pointer w-full px-3 py-2 md:px-2 border border-gray-400 hover:bg-gray-100 rounded-md"
-              onClick={() => moveEdit(note)}
             >
               <div className="flex justify-between items-center">
-                <div className="flex gap-3 items-center">
+                <div
+                  className="flex gap-3 items-center w-full"
+                  onClick={() => moveEdit(note)}
+                >
                   <Logo tag={note.tag} />
                   <div className="flex flex-col items-start gap-0.5">
                     <h3 className="font-semibold text-primary">{note.title}</h3>
