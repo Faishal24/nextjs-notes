@@ -44,7 +44,7 @@ const Sidebar = ({ setActiveScreen, screen }) => {
           )}
         </div>
 
-        <div className={`${isOpen && "border-b mb-2"} rounded-b-lg md:hidden`}>
+        <div className={`${isOpen && "shadow"} rounded-b-lg md:hidden`}>
           {isOpen && (
             <ul className="px-2">
               <li
@@ -122,7 +122,7 @@ const Sidebar = ({ setActiveScreen, screen }) => {
         </div>
       </div>
 
-      <div className="hidden md:flex md:flex-col md:justify-between md:h-screen md:p-3 md:bg-gray-50 md:shadow md:w-72 md:z-50">
+      <div className="hidden md:flex flex-col justify-between h-full p-3 bg-gray-50 w-72 z-50 fixed">
         <ul className="space-y-2">
           <li
             className={`rounded-md hover:bg-gray-200 transition duration-200 text-gray-800 ${
