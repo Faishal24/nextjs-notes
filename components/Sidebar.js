@@ -24,100 +24,102 @@ const Sidebar = ({ setActiveScreen, screen }) => {
   };
 
   return (
-    <nav className="">
-      <div className="flex md:hidden h-10 w-screen items-center justify-end px-5">
-        {isOpen ? (
-          <MdClose
-            className={`text-3xl ${
-              isAnimating ? "animate-rotateOut" : "animate-rotateIn"
-            }`}
-            onClick={toggle}
-          />
-        ) : (
-          <MdMenu
-            className={`text-3xl ${
-              isAnimating ? "animate-rotateOut" : "animate-rotateIn"
-            }`}
-            onClick={toggle}
-          />
-        )}
-      </div>
+    <nav>
+      <div className="fixed bg-white w-full">
+        <div className="flex md:hidden h-10 w-screen items-center justify-end px-5">
+          {isOpen ? (
+            <MdClose
+              className={`text-3xl ${
+                isAnimating ? "animate-rotateOut" : "animate-rotateIn"
+              }`}
+              onClick={toggle}
+            />
+          ) : (
+            <MdMenu
+              className={`text-3xl ${
+                isAnimating ? "animate-rotateOut" : "animate-rotateIn"
+              }`}
+              onClick={toggle}
+            />
+          )}
+        </div>
 
-      <div className={`${isOpen && "border-b mb-2"} rounded-b-lg md:hidden`}>
-        {isOpen && (
-          <ul className="px-2">
-            <li
-              className={`rounded-md hover:bg-gray-200 transition duration-200 text-gray-800 ${
-                screen == "newNotes" ? "bg-gray-200" : ""
-              }`}
-            >
-              <a
-                href="#"
-                className="flex gap-2 items-center p-2"
-                onClick={() => setActiveScreen("newNotes")}
+        <div className={`${isOpen && "border-b mb-2"} rounded-b-lg md:hidden`}>
+          {isOpen && (
+            <ul className="px-2">
+              <li
+                className={`rounded-md hover:bg-gray-200 transition duration-200 text-gray-800 ${
+                  screen == "newNotes" ? "bg-gray-200" : ""
+                }`}
               >
-                <MdOutlineStickyNote2 className="text-xl" />
-                <span>New Note</span>
-              </a>
-            </li>
-            <li
-              className={`rounded-md hover:bg-gray-200 transition duration-200 text-gray-800 ${
-                screen == "notes" ? "bg-gray-200" : ""
-              }`}
-            >
-              <a
-                href="#"
-                className="flex gap-2 items-center p-2"
-                onClick={() => setActiveScreen("notes")}
+                <a
+                  href="#"
+                  className="flex gap-2 items-center p-2"
+                  onClick={() => setActiveScreen("newNotes")}
+                >
+                  <MdOutlineStickyNote2 className="text-xl" />
+                  <span>New Note</span>
+                </a>
+              </li>
+              <li
+                className={`rounded-md hover:bg-gray-200 transition duration-200 text-gray-800 ${
+                  screen == "notes" ? "bg-gray-200" : ""
+                }`}
               >
-                <MdNotes className="text-xl" />
-                <span>Notes</span>
-              </a>
-            </li>
-            <li
-              className={`rounded-md hover:bg-gray-200 transition duration-200 text-gray-800 ${
-                screen == "archives" ? "bg-gray-200" : ""
-              }`}
-            >
-              <a
-                href="#"
-                className="flex gap-2 items-center p-2"
-                onClick={() => setActiveScreen("archives")}
+                <a
+                  href="#"
+                  className="flex gap-2 items-center p-2"
+                  onClick={() => setActiveScreen("notes")}
+                >
+                  <MdNotes className="text-xl" />
+                  <span>Notes</span>
+                </a>
+              </li>
+              <li
+                className={`rounded-md hover:bg-gray-200 transition duration-200 text-gray-800 ${
+                  screen == "archives" ? "bg-gray-200" : ""
+                }`}
               >
-                <MdOutlineArchive className="text-xl" />
-                <span>Archives</span>
-              </a>
-            </li>
-            <li
-              className={`rounded-md hover:bg-gray-200 transition duration-200 text-gray-800 ${
-                screen == "tags" ? "bg-gray-200" : ""
-              }`}
-            >
-              <a
-                href="#"
-                className="flex gap-2 items-center p-2"
-                onClick={() => setActiveScreen("tags")}
+                <a
+                  href="#"
+                  className="flex gap-2 items-center p-2"
+                  onClick={() => setActiveScreen("archives")}
+                >
+                  <MdOutlineArchive className="text-xl" />
+                  <span>Archives</span>
+                </a>
+              </li>
+              <li
+                className={`rounded-md hover:bg-gray-200 transition duration-200 text-gray-800 ${
+                  screen == "tags" ? "bg-gray-200" : ""
+                }`}
               >
-                <MdOutlineTag className="text-xl" />
-                <span>Tags</span>
-              </a>
-            </li>
-            <li
-              className={`rounded-md hover:bg-gray-200 transition duration-200 text-gray-800 ${
-                screen == "settings" ? "bg-gray-200" : ""
-              }`}
-            >
-              <a
-                href="#"
-                className="flex gap-2 items-center p-2"
-                onClick={() => setActiveScreen("settings")}
+                <a
+                  href="#"
+                  className="flex gap-2 items-center p-2"
+                  onClick={() => setActiveScreen("tags")}
+                >
+                  <MdOutlineTag className="text-xl" />
+                  <span>Tags</span>
+                </a>
+              </li>
+              <li
+                className={`rounded-md hover:bg-gray-200 transition duration-200 text-gray-800 ${
+                  screen == "settings" ? "bg-gray-200" : ""
+                }`}
               >
-                <MdOutlineSettings className="text-xl" />
-                <span>Settings</span>
-              </a>
-            </li>
-          </ul>
-        )}
+                <a
+                  href="#"
+                  className="flex gap-2 items-center p-2"
+                  onClick={() => setActiveScreen("settings")}
+                >
+                  <MdOutlineSettings className="text-xl" />
+                  <span>Settings</span>
+                </a>
+              </li>
+            </ul>
+          )}
+        </div>
       </div>
 
       <div className="hidden md:flex md:flex-col md:justify-between md:h-screen md:p-3 md:bg-gray-50 md:shadow md:w-72 md:z-50">
