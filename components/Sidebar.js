@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { SignedIn, UserButton } from "@clerk/nextjs";
 import {
   MdOutlineStickyNote2,
   MdNotes,
@@ -26,22 +27,27 @@ const Sidebar = ({ setActiveScreen, screen }) => {
   return (
     <nav>
       <div className="fixed bg-white w-full">
-        <div className="flex md:hidden h-10 w-screen items-center justify-end px-5">
-          {isOpen ? (
-            <MdClose
-              className={`text-3xl ${
-                isAnimating ? "animate-rotateOut" : "animate-rotateIn"
-              }`}
-              onClick={toggle}
-            />
-          ) : (
-            <MdMenu
-              className={`text-3xl ${
-                isAnimating ? "animate-rotateOut" : "animate-rotateIn"
-              }`}
-              onClick={toggle}
-            />
-          )}
+        <div className="flex md:hidden h-10 w-screen items-center justify-between px-3">
+          <SignedIn>
+            <UserButton />
+          </SignedIn>
+          <div>
+            {isOpen ? (
+              <MdClose
+                className={`text-3xl ${
+                  isAnimating ? "animate-rotateOut" : "animate-rotateIn"
+                }`}
+                onClick={toggle}
+              />
+            ) : (
+              <MdMenu
+                className={`text-3xl ${
+                  isAnimating ? "animate-rotateOut" : "animate-rotateIn"
+                }`}
+                onClick={toggle}
+              />
+            )}
+          </div>
         </div>
 
         <div className={`${isOpen && "shadow"} rounded-b-lg md:hidden`}>
@@ -196,8 +202,8 @@ const Sidebar = ({ setActiveScreen, screen }) => {
           </li>
         </ul>
 
-        <div>
-          <ul>
+        <div className="p-3">
+          {/* <ul>
             <li className="rounded-md p-2 text-md text-gray-800">
               <a href="#">
                 <p className="group relative w-max">
@@ -222,7 +228,10 @@ const Sidebar = ({ setActiveScreen, screen }) => {
                 </p>
               </a>
             </li>
-          </ul>
+          </ul> */}
+          <SignedIn>
+            <UserButton />
+          </SignedIn>
         </div>
       </div>
     </nav>

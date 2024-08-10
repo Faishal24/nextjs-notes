@@ -62,7 +62,7 @@ export default function Notes({ setActiveScreen, setData }) {
   return (
     <div className="bg-white">
       <h1 className="text-3xl font-semibold mb-7 text-primary">
-        Welcome back, Atmin!
+        Welcome back, 
       </h1>
       <p className="text-xl font-semibold mb-4 text-primary">
         Here are your notes:
