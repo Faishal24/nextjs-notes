@@ -5,10 +5,13 @@ import { HiOutlineTrash } from "react-icons/hi";
 import { MdOutlineArchive } from "react-icons/md";
 import PopUp from "@/components/PopUp";
 import Logo from "@/components/Logo";
+import { useUser } from '@clerk/nextjs'
+import capitalize from "@/libs/capitalize";
 
 export default function Notes({ setActiveScreen, setData }) {
   const [notes, setNotes] = useState([]);
   const [popUpInfo, setPopUpInfo] = useState(null);
+  const { user } = useUser()
 
   const getNotes = async () => {
     try {
@@ -62,7 +65,7 @@ export default function Notes({ setActiveScreen, setData }) {
   return (
     <div className="bg-white">
       <h1 className="text-3xl font-semibold mb-7 text-primary">
-        Welcome back, 
+        Welcome back, {capitalize(user.username)}
       </h1>
       <p className="text-xl font-semibold mb-4 text-primary">
         Here are your notes:
