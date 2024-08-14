@@ -109,20 +109,6 @@ const Sidebar = ({ setActiveScreen, screen }) => {
                   <span>Tags</span>
                 </a>
               </li>
-              <li
-                className={`rounded-md hover:bg-gray-200 transition duration-200 text-gray-800 ${
-                  screen == "settings" ? "bg-gray-200" : ""
-                }`}
-              >
-                <a
-                  href="#"
-                  className="flex gap-2 items-center p-2"
-                  onClick={() => setActiveScreen("settings")}
-                >
-                  <MdOutlineSettings className="text-xl" />
-                  <span>Settings</span>
-                </a>
-              </li>
             </ul>
           )}
         </div>
@@ -184,20 +170,6 @@ const Sidebar = ({ setActiveScreen, screen }) => {
             >
               <MdOutlineTag className="text-xl" />
               <span>Tags</span>
-            </a>
-          </li>
-          <li
-            className={`rounded-md hover:bg-gray-200 transition duration-200 text-gray-800 ${
-              screen == "settings" ? "bg-gray-200" : ""
-            }`}
-          >
-            <a
-              href="#"
-              className="flex gap-2 items-center p-2"
-              onClick={() => setActiveScreen("settings")}
-            >
-              <MdOutlineSettings className="text-xl" />
-              <span>Settings</span>
             </a>
           </li>
         </ul>
